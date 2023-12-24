@@ -11,7 +11,8 @@
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+<!--		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>-->
+		<p class="textarea-primary">© <a  href="mailto:thieuluan.nguyen@gmail.com">Nguyen Thieu Luan</a></p>
 	</footer>
 </div>
 
