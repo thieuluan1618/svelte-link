@@ -1,7 +1,28 @@
 <script>
 	import { page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+	import github from '$lib/images/github.svg'
+	import { onMount } from 'svelte';
+	import { writable } from 'svelte/store';
+
+	let isOpen = writable(false);
+
+	let username = '';
+	let password = '';
+
+	function openDialog() {
+		isOpen.set(true);
+	}
+
+	function closeDialog() {
+		isOpen.set(false);
+	}
+
+	function submitForm() {
+		// Handle form submission
+		alert(`Login with username: ${username} and password: ${password}`);
+	}
+
 </script>
 
 <header>
@@ -31,10 +52,36 @@
 		</svg>
 	</nav>
 
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
+	<div class="flex justify-center items-center gap-2 text-white">
+		<a class="" on:click={openDialog}>Login</a>
+
+		<a class="flex-shrink-0 w-fit" href="https://github.com/sveltejs/kit">
+			<img class="w-8" src={github} alt="GitHub" />
 		</a>
+
+		{#if $isOpen}
+			<dialog class="fixed border-r-amber-100 p-5 inset-0 flex items-center justify-center bg-black" open>
+				<form class="form-control" on:submit|preventDefault={submitForm}>
+
+					<label class="label">
+						<span class="label-text">Username</span>
+					</label>
+
+					<input type="text" class="input input-bordered" bind:value={username} />
+
+					<label class="label">
+						<span class="label-text">Password</span>
+					</label>
+
+					<input type="password" class="input input-bordered" bind:value={password} />
+
+					<div class="modal-action">
+						<button class="btn btn-primary" type="submit">Login</button>
+						<button class="btn btn-ghost" on:click={closeDialog}>Cancel</button>
+					</div>
+				</form>
+			</dialog>
+		{/if}
 	</div>
 </header>
 

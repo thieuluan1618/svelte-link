@@ -16,7 +16,7 @@
 	<div class="avatar">
 
 		<div class="w-24 rounded-full">
-		  <img alt="avatar" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+		  <img alt="avatar" src="src/lib/images/avatar.png" />
 		</div>
 	  </div>
 	<button class="btn">@nguyenthieuluan</button>
